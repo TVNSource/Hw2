@@ -61,16 +61,25 @@ body {
   margin-right:auto; 
 }
 
+.errorMsg{
+	color:red;	
+}
+
+.validMsg{
+	color:green;
+	
+}
 
 /*Table design */
 #myForm .label-cell {
     text-align: right;
     padding: 10px;
 }
-
-#myForm .submit-cell {    
-    text-align: center;    
+#myForm .label-cell {
+    text-align: right;
+    padding: 10px;
 }
+
 
 #myForm {
   font-family: Arial, Helvetica, sans-serif;

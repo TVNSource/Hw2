@@ -54,7 +54,9 @@ Description: Assignment 2
                                  placeholder="first name" 
                                  required 
                                  maxlength="30"
-								 title="Minimum 1 characters; only letters, &quot-&quot and ' allowed.">         
+								 title="Minimum 1 characters; only letters, &quot-&quot and ' allowed."
+								 oninvalid="this.setCustomValidity('First Name not valid.')"
+								 oninput="this.setCustomValidity('')">         
                         </td>
                      </tr>
                      <tr>
@@ -84,7 +86,7 @@ Description: Assignment 2
                                  placeholder="last name" 
                                  required 
                                  maxlength="30"
-								 title="Minimum 1 characters; only letters, spaces, &quot-&quot and ' allowed.">         
+								 title="Minimum 1 characters; only letters, number 2 to 5, spaces, &quot-&quot and ' allowed.">         
                         </td>
                      </tr>
                   <tr>
@@ -95,9 +97,12 @@ Description: Assignment 2
                            <input type="date" 
                                  id="DOB" 
                                  name="DOB" 
-                                 required> 
-								<!--add validate DOB Here-->	 
+                                 required
+								 onblur="checkDate()">								
+								 <label id="DOB_msg" class="errorMsg"></label>								
                         </td>
+						
+						
                      </tr>
                   <tr>
                         <td class="label-cell">
