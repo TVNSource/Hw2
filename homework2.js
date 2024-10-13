@@ -267,7 +267,7 @@ function reviewData() {
 	  <tr><td align="right">My Health Score:</td><td>${slider.value}</td><td></td></tr>
       <tr><td align="right">Flushot today?</td><td>${flu}</td><td></td></tr>
 	  <tr><td align="right">Has insurance?</td><td>${insurance}</td><td></td></tr>
-	  <tr><td align="right">UserID</td><td>${userID}</td><td></td>${useridError.innerHTML}</tr>
+	  <tr><td align="right">UserID</td><td>${userID}</td><td>${useridError.innerHTML}</td></tr>
 	  <tr><td align="right">Password</td><td>${pwd}</td><td>${passMsg.innerHTML}</td></tr>
 	 <tbody>
     </table>`;
