@@ -253,7 +253,7 @@ function reviewData() {
     </colgroup>
      <tbody>
 	   <tr><th colspan="3">Please Review Your Information: </th></tr>
-      <tr><td align="right">Name (First, MI, Last):</td><td>${fname} ${mname} ${lname}</td> <td></td></tr>
+      <tr> <td align="right"><br/> Name (First, MI, Last):</td><td>${fname} ${mname} ${lname}</td> <td></td></tr>
       <tr><td align="right">Date of Birth:</td><td>${dob}</td><td>${dobMsg.innerHTML}</td></tr>
       <tr><td align="right">Address:</td><td>${addr1} <br> ${addr2} <br> ${city}, ${state} ${zipCode}</td><td>${zipError.innerHTML}</td></tr>
       <tr><td align="right">Email:</td><td>${email}</td><td></td></tr>

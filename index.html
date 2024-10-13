@@ -34,7 +34,7 @@ Description: Assignment 2
          <div class="row">
             <div class="card">     
                   <!-- submit page will direct to thankyou page -->
-                  <form name="registrationForm" id="registrationForm" action="homework2-thankyou.html">
+                  <form name="registrationForm" id="registrationForm" action="homework2-thankyou.html" >
                   <table id="myForm" >
                      <tr>
                         <th colspan="2">New Patient Registration</th>
@@ -444,30 +444,23 @@ Description: Assignment 2
                      <tr>        
                         <td colspan="2" class="submit-cell">
                            <br/>
-                         <!--   <input type="button" value="Review" onclick='review()'>  -->
+                      
 						   <input type="submit" value="Submit">
                            <input type="reset"  value="Clear & Start Over">						   						   
-						   <input type="submit" value="Review"  id="reviewBtn" onclick="reviewData()">
+						   <!-- <input type="submit" value="Review"  id="reviewBtn" onclick="reviewData()">-->
+						   <button type="button" class="button" onclick="reviewData()">Review</button>
 						 </td>
                      </tr>
                   </table>
                </form>               
             </div>
          </div>
-         	<!--
-		 <div class="row">
-			<div class="card">
-				<div id="previewData">				
-				</div>
-			</div>
-		 </div>
-		  -->
+         	
 	
 		<!-- Review Modal -->
 		<div id="myModal" class="modal">			
 		  <div class="modal-content">
-			<span class="close">&times;</span>
-			
+			<span class="close">&times;</span>			
 			<span id="content"></span>
 		  </div>
 		</div>
