@@ -34,8 +34,8 @@ Description: Assignment 2
          <div class="row">
             <div class="card">     
                   <!-- submit page will direct to thankyou page -->
-                  <form action="homework2-thankyou.html">
-                  <table class="form-table" id="myForm" >
+                  <form name="registrationForm" id="registrationForm" action="homework2-thankyou.html">
+                  <table id="myForm" >
                      <tr>
                         <th colspan="2">New Patient Registration</th>
                      </tr>      
@@ -56,12 +56,12 @@ Description: Assignment 2
                                  maxlength="30"
 								 title="Minimum 1 characters; only letters, &quot-&quot and ' allowed."
 								 oninvalid="this.setCustomValidity('First Name not valid.')"
-								 oninput="this.setCustomValidity('')">         
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="firstnameError"></span>         
                         </td>
                      </tr>
                      <tr>
                         <td class="label-cell">
-                           <label for="FirstName">Midle Initial</label>
+                           <label for="MidName">Midle Initial</label>
                      </td>
                         <td class="input-cell">
                            <input type="text" 
@@ -70,7 +70,7 @@ Description: Assignment 2
 								 pattern="[A-Z^a-z ]{0,}"
                                  placeholder="middle initial"
 								 title="Optional 1 letter, no numbers"
-                                 maxlength="1">       
+                                 maxlength="1"><span class="errorMsg" id="midnameError"></span>       
                         </td>
                      </tr>
                   
@@ -86,7 +86,9 @@ Description: Assignment 2
                                  placeholder="last name" 
                                  required 
                                  maxlength="30"
-								 title="Minimum 1 characters; only letters, number 2 to 5, spaces, &quot-&quot and ' allowed.">         
+								 title="Minimum 1 characters; only letters, number 2 to 5, spaces, &quot-&quot and ' allowed."
+								 oninvalid="this.setCustomValidity('Last Name not valid.')"
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="lastnameError"></span>         
                         </td>
                      </tr>
                   <tr>
@@ -98,12 +100,10 @@ Description: Assignment 2
                                  id="DOB" 
                                  name="DOB" 
                                  required
-								 onblur="checkDate()">								
-								 <label id="DOB_msg" class="errorMsg"></label>								
+								 onblur="checkDate()"><span class="errorMsg" id="dobError"></span>
+															
                         </td>
-						
-						
-                     </tr>
+                    </tr>
                   <tr>
                         <td class="label-cell">
                            <label for="SSN">SSN</label>       
@@ -114,7 +114,9 @@ Description: Assignment 2
                                  name="SSN"  
                                  placeholder="xxx-xx-xxxx" 
                                  maxlength="11"
-								 title="Enter number and dash only">       
+								 title="Enter number and dash only"
+								 oninvalid="this.setCustomValidity('SSN not valid.')"
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="ssnError"></span>       
                         </td>
                   </tr>
                   <tr>
@@ -143,7 +145,9 @@ Description: Assignment 2
                                  required
 								 minlength="2"		
                                  maxlength="30"
-								 title="Minimum 2 characters.">
+								 title="Minimum 2 characters."
+								 oninvalid="this.setCustomValidity('Address not valid.')"
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="add1Error"></span>
                         </td>
                   </tr>     
                   <tr>
@@ -153,7 +157,7 @@ Description: Assignment 2
                         <td class="input-cell">
                            <input type="text" 
                                  id="Address2" 
-                                 name="Address1" 
+                                 name="Address2" 
                                  placeholder="Apt/Ste #"                                   
                                  minlength="2"
 								 maxlength="30"
@@ -172,7 +176,9 @@ Description: Assignment 2
                                  required
                                  minlength="2"
 								 maxlength="30"
-								 title="Minimum 2 characters">                      
+								 title="Minimum 2 characters"
+								 oninvalid="this.setCustomValidity('City not valid.')"
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="cityError"></span> 
                         </td>
                   </tr>
                   <tr>
@@ -248,7 +254,12 @@ Description: Assignment 2
                                  pattern="\d{5,5}(-\d{4,4})?" 
                                  required 
                                  maxlength="10"
-								 title="Minimum 5 characters; only number and &quot-&quot allowed.">
+								 title="Minimum 5 characters; only number and &quot-&quot allowed."
+								 oninvalid="this.setCustomValidity('Zip code not valid.')"
+								 oninput="this.setCustomValidity('')"
+								 onfocus="checkZip()"
+								 oninput="checkZip()"
+						         onblur="checkZip()"><span class="errorMsg" id="zipError"></span>
 								 
                         </td>
                      </tr> 
@@ -263,7 +274,9 @@ Description: Assignment 2
                                  placeholder="000-000-0000" 
                                  maxlength="13"
 								 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-								 title="Enter number only.">
+								 title="Enter number only."
+								 oninvalid="this.setCustomValidity('Phone Number not valid.')"
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="phoneError"></span>
                         </td>
                      </tr>
                      <tr>
@@ -278,8 +291,10 @@ Description: Assignment 2
                                  required
                                  maxlength="50"
 								 pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-								 title="Must be valid email">			
-                        </td>
+								 title="Enter valid email format name@domain.com"
+								 oninvalid="this.setCustomValidity('Email not valid.')"
+								 oninput="this.setCustomValidity('')"><span class="errorMsg" id="emailError"></span>
+						</td>
                      </tr>
                   <tr>
                         <td class="label-cell">
@@ -290,8 +305,8 @@ Description: Assignment 2
                                  name="Symptom" 
                                  rows="3" 
                                  cols="50" 
-                                 required>please describe your current symptoms
-                        </textarea>			
+                                 required
+								 placeholder = "please describe your current symptoms ..."></textarea>			
                         </td>
                      </tr>
 
@@ -318,14 +333,14 @@ Description: Assignment 2
                         <td class="label-cell">
                            <label>How good is your health (1-10)?</label>
                         </td>
-                        <td class="input-cell">  Slide the bar to select<br/>
+                        <td class="input-cell">  <p> Slide the bar to select </p>
                             1 &nbsp;<input type="range" 
                                     min="1" 
                                     max="10" 
                                     value="1"                      
                                     id="healthBar"
 									list="increments">&nbsp; 10
-							<p>Your value: <span id="healthBarVal"></span></p>
+							<p>your choice: <span id="healthBarVal"></span></p>
 							<datalist id="increments">
 							<option value="1"></option>
 							<option value="2"></option>
@@ -337,11 +352,8 @@ Description: Assignment 2
 							<option value="8"></option>
 							<option value="9"></option>
 							<option value="10"></option>
-                    
-                </datalist>
-							
-							
-                        </td>
+							</datalist>
+						</td>
                   </tr>
 				  
                   <tr>
@@ -349,9 +361,9 @@ Description: Assignment 2
                            <label>Do you want a flu shot today?</label>
                         </td>
                         <td>              
-                              <input type="radio" id="shotY" name="flushot" value="1">
+                              <input type="radio" id="shotY" name="flushot" value="Y">
                               <label for="shotY">Yes</label> 
-                              <input type="radio" id="shotN" name="flushot" value="0">
+                              <input type="radio" id="shotN" name="flushot" value="N">
                               <label for="shotN">No</label><br>                                		
                         </td>
                   </tr>
@@ -360,13 +372,12 @@ Description: Assignment 2
                            <label>Do you have insurance?</label>
                         </td>
                         <td>              
-                              <input type="radio" id="insuranceY" name="insurance" value="1">
+                              <input type="radio" id="insuranceY" name="insurance" value="Y">
                               <label for="insuranceY">Yes</label> 
-                              <input type="radio" id="insuranceN" name="insurance" value="0">
+                              <input type="radio" id="insuranceN" name="insurance" value="N">
                               <label for="insuranceN">No</label><br>                                		
                         </td>
                   </tr>
-
 
                   <tr>
                         <td class="label-cell">
@@ -380,8 +391,13 @@ Description: Assignment 2
                                  required
 								 minlength="5"		
                                  maxlength="30"
-								 pattern="[A-Za-z]+[A-Za-z0-9-_]{5,}"
-								 title="Minumum 5 characters; no spaces or 'special' characters.">
+								 pattern="[A-Za-z][A-Za-z0-9_-]{4,29}"
+								 title="UserID must be 5-30 characters long, start with a letter, and contain only letters, numbers, underscores, or dashes."
+								 oninvalid="this.setCustomValidity('UserID not valid.')"
+								 oninput="this.setCustomValidity('')"
+								 onfocus="checkUserID()"
+								 oninput="checkUserID()"
+						         onblur="checkUserID()"><span class="errorMsg" id="useridError"></span>
                         </td>
                   </tr>     
                   <tr>
@@ -396,7 +412,12 @@ Description: Assignment 2
 								 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
 								 title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 								 minlength="8"
-								 maxlength="30">
+								 maxlength="30"
+								 placeholder="password"
+								 onfocus="checkPassword()"
+								 oninput="checkPassword()"
+						         onblur="checkPassword()">
+								 <br><span id="pwdError"></span>
                         </td>
                   </tr>     
                   <tr>
@@ -409,29 +430,53 @@ Description: Assignment 2
                                  name="rePwd" 
                                  required
 								 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-								 title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+								 title="Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+								 minlength="8"
+								 maxlength="30"
+								 placeholder="re-enter password"
+								 onfocus="checkPasswordMatch()"
+								 oninput="checkPasswordMatch()"
+						         onblur="checkPasswordMatch()"> 
+								 <br> <span id="rePwdError"></span>
                         </td>
                      </tr>     
                   
                      <tr>        
                         <td colspan="2" class="submit-cell">
                            <br/>
-                           <input type="submit" value="Submit">
-                           <input type="reset"  value="Clear & Start Over">
-                        </td>
+                         <!--   <input type="button" value="Review" onclick='review()'>  -->
+						   <input type="submit" value="Submit">
+                           <input type="reset"  value="Clear & Start Over">						   						   
+						   <input type="submit" value="Review"  id="reviewBtn" onclick="reviewData()">
+						 </td>
                      </tr>
                   </table>
-               </form>
-               
+               </form>               
+            </div>
          </div>
-         </div>
-         
+         	<!--
+		 <div class="row">
+			<div class="card">
+				<div id="previewData">				
+				</div>
+			</div>
+		 </div>
+		  -->
+	
+		<!-- Review Modal -->
+		<div id="myModal" class="modal">			
+		  <div class="modal-content">
+			<span class="close">&times;</span>
+			
+			<span id="content"></span>
+		  </div>
+		</div>
+		 
          <!-- Footer section -->
          <div class="footer">            
                <p> &copy; MIS Health Hospital: 4250 Martin Luther King Blvd, Houston, TX 77204 </p>
                &#9742; <a href="homework2-about.html">CONTACT US </a>
-         </div>
-       
+         </div>       
         
          <!-- Load external JavaScript -->
          <script src="homework2.js"></script>     
